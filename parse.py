@@ -91,8 +91,8 @@ def extract_logs_for_user(logs_dir: Path, username: str) -> None:
             prefix="temp-overrustle", dir=os.getcwd()
         ) as td:
             logger.debug(f"Extracting {archive} to {td}")
-            userlogs: List[Chatlog] = []
             Archive(archive).extractall(td)
+            userlogs: List[Chatlog] = []
             for file in Path(td).rglob("*"):
                 # print a dot for each file processed
                 print(".", file=sys.stderr, end="")
