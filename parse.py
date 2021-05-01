@@ -87,7 +87,7 @@ def extract_logs_for_user(logs_dir: Path, username: str) -> None:
         # files can be huge, so extracting to this directory instead of /tmp
         # in case there are space concerns
         with tempfile.TemporaryDirectory(
-            prefix="temp-overrustle", dir=os.getcwd()
+            prefix="temp-overrustle-", dir=os.getcwd()
         ) as td:
             logger.debug(f"Extracting {archive} to {td}")
             Archive(archive).extractall(td)
@@ -96,7 +96,9 @@ def extract_logs_for_user(logs_dir: Path, username: str) -> None:
             for i, file in enumerate(chatlog_files):
                 if not file.is_file():
                     continue
-                logger.debug(f"[{channel_name} | {i}/{len(chatlog_files)}] Processing {file.stem}...")
+                logger.debug(
+                    f"[{channel_name} | {i}/{len(chatlog_files)}] Processing {file.stem}..."
+                )
                 count = 0
                 with file.open("r") as f:
                     for log in parse_chatlog_buf(f, channel_name=channel_name):
