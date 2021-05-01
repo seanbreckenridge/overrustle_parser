@@ -93,7 +93,7 @@ def extract_logs_for_user(logs_dir: Path, username: str) -> None:
             Archive(archive).extractall(td)
             userlogs: List[Chatlog] = []
             chatlog_files: List[Path] = list(sorted(Path(td).rglob("*.txt")))
-            for i, file in enumerate(chatlog_files):
+            for i, file in enumerate(chatlog_files, 1):
                 if not file.is_file():
                     continue
                 logger.debug(
