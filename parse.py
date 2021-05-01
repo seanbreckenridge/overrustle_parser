@@ -1,4 +1,3 @@
-import sys
 import os
 import re
 import json
@@ -67,8 +66,8 @@ def parse_chatlog_buf(f: TextIO, channel_name: str) -> Results:
             yield res
 
 
-def results_file(channel_name: str) -> Path:
-    r = Path(os.getcwd(), "results", channel_name + ".json")
+def results_file(username: str, channel_name: str) -> Path:
+    r = Path(os.getcwd(), username, channel_name + ".json")
     if not r.parent.exists():
         r.parent.mkdir()
     return r
@@ -81,7 +80,7 @@ def extract_logs_for_user(logs_dir: Path, username: str) -> None:
 
     for archive in archives:
         channel_name = archive.stem
-        resfile = results_file(channel_name)
+        resfile = results_file(username, channel_name)
         if resfile.exists():
             logger.debug(f"{resfile} already exists, skipping...")
             continue
@@ -93,12 +92,11 @@ def extract_logs_for_user(logs_dir: Path, username: str) -> None:
             logger.debug(f"Extracting {archive} to {td}")
             Archive(archive).extractall(td)
             userlogs: List[Chatlog] = []
-            for file in Path(td).rglob("*"):
-                # print a dot for each file processed
-                print(".", file=sys.stderr, end="")
-                sys.stderr.flush()
+            chatlog_files: List[Path] = list(sorted(Path(td).rglob("*.txt")))
+            for i, file in enumerate(chatlog_files):
                 if not file.is_file():
                     continue
+                logger.debug(f"[{channel_name} | {i}/{len(chatlog_files)}] Processing {file.stem}...")
                 count = 0
                 with file.open("r") as f:
                     for log in parse_chatlog_buf(f, channel_name=channel_name):

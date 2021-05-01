@@ -11,7 +11,7 @@ Expects:
 
 Extracts the `.7z` files one by one into the current directory, finds any of my logs, then removes the temporary directory. Can take multiple days to run depending on your computer, is a *lot* of data (`~48G` when compressed)
 
-Saves results to a `./results` directory -- one JSON file per channel. This saves even if it finds no logs, so in case this crashes, it can re-started and already processed files will be skipped. To combine those into a single file, you can use [`jq`](https://github.com/stedolan/jq), like `jq '.[]' <./results/* | jq -r --slurp > comments.json`
+Saves results to a `./<your username>` directory -- one JSON file per channel. This saves even if it finds no logs, so in case this crashes, it can re-started and already processed files will be skipped. To combine those into a single file, you can use [`jq`](https://github.com/stedolan/jq), like `jq '.[]' <./<your username>/* | jq -r --slurp > comments.json`
 
 Created to be used as part of [HPI](https://github.com/seanbreckenridge/HPI)
 
