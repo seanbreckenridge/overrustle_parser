@@ -23,3 +23,12 @@ cd ./overrustle_parser
 python3 -m pip install -r ./requirements.txt
 python3 ~/Downloads/OverrustleLogs\ Archive/ moobot
 ```
+
+Personally resulted in:
+
+```bash
+$ jq <* '.[] | .dt' | wc -l
+1585  # number of comments
+ $ jq -r <* '.[] | .channel' | sort -u | wc -l
+43  # from these many channels
+```
