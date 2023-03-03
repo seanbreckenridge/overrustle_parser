@@ -21,7 +21,7 @@ Created to be used as part of [HPI](https://github.com/seanbreckenridge/HPI)
 git clone https://github.com/seanbreckenridge/overrustle_parser
 cd ./overrustle_parser
 python3 -m pip install -r ./requirements.txt
-python3 ~/Downloads/OverrustleLogs\ Archive/ moobot
+python3 parse.py ~/Downloads/OverrustleLogs\ Archive/ moobot
 ```
 
 Personally resulted in:
@@ -31,4 +31,11 @@ $ jq <* '.[] | .dt' | wc -l
 1585  # number of comments
  $ jq -r <* '.[] | .channel' | sort -u | wc -l
 43  # from these many channels
+```
+
+To run tests:
+
+```bash
+python3 -m pip install pytest
+python3 -m pytest parse.py
 ```
