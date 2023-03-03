@@ -1,6 +1,6 @@
 # overrustle_parser
 
-Some code to extract my messages from [this overrustle logs archive torrent](https://www.reddit.com/r/Destiny/comments/gcapu0/overrustle_logs_archive_torrent_as_of_april_30/). For those unaware, OverRustle collated logs from popular twitch channels for a couple years but were shut down in 2020 -- so this is just to grab some of my old messages so I have access to them.
+Some code to extract my messages from [this overrustle logs archive torrent](https://web.archive.org/web/20210920224341/https://www.reddit.com/r/Destiny/comments/gcapu0/overrustle_logs_archive_torrent_as_of_april_30/). For those unaware, OverRustle collated logs from popular twitch channels for a couple years but were shut down in 2020 -- so this is just to grab some of my old messages so I have access to them.
 
 Thought the [twitch data request](https://www.twitch.tv/p/en/legal/privacy-choices/#user-privacy-requests) would've given me my chat logs but sadly did not.
 
