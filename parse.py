@@ -45,7 +45,7 @@ def _parse_datetime(dts: str) -> datetime:
 def parse_chatlog(line: str, channel_name: str) -> Optional[Chatlog]:
     matches = re.match(CHAT_REGEX, line)
     if matches is None or bool(matches) is False:
-        logger.debug(f"Couldnt find a match in {line}")
+        logger.debug(f"Couldn't find a match in {line}")
         return None
     return Chatlog(
         dt=_parse_datetime(matches.group(1)),
